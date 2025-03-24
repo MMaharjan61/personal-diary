@@ -32,11 +32,11 @@
 
 /* Custom styles for the diary app */
 .bg-gradient {
-  background: linear-gradient(180deg, #082140 0%, #3C4154 100%);
+  background: linear-gradient(180deg, #082140 0%, #3c4154 100%);
 }
 
 .text-highlight {
-  color: #F0A240;
+  color: #f0a240;
 }
 
 .add-entry-btn {
@@ -45,4 +45,30 @@
 
 .add-entry-btn:hover {
   @apply bg-[#F0A240] text-[#FFFFFF];
+}
+
+@layer components {
+  .react-calendar {
+    @apply !bg-[#d4a8b4] p-4 rounded-lg shadow-md;
+  }
+
+  .react-calendar__tile {
+    @apply text-gray-700 hover:bg-blue-400 rounded-md transition duration-200;
+  }
+
+  .react-calendar__tile--active {
+    @apply bg-blue-500 text-white;
+  }
+
+  .react-calendar__tile--now {
+    @apply bg-gray-200;
+  }
+
+  .react-calendar__month-view__days__day--weekend {
+    @apply text-red-500;
+  }
+
+  .react-calendar__navigation button {
+    @apply text-black;
+  }
 }
