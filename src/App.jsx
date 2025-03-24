@@ -7,7 +7,7 @@ const App = () => {
      <>
 
  <div className="text-2xl">Hello</div>;
- <Calendar className=""/>
+ <Calendar className="button-text-"/>
  
  
   </>

@@ -1,14 +1,14 @@
 import Calendar from 'react-calendar'
 
 
-const Calendar  = () => {
+const DiaryCalendar  = () => {
 
 
 
     return (
         <>
         
-        <Calendar />
+        <Calendar  />
         
         </>
     );
@@ -17,4 +17,4 @@ const Calendar  = () => {
 
 };
 
-export default Calendar;
+export default DiaryCalendar;

@@ -29,3 +29,24 @@
     @apply bg-[#c18234] text-[#FFFFFF];
   }
 }
+
+@layer components{
+  .Calender h1{
+    @apply text-black
+  }
+  .p {
+    @apply text-black
+  }
+  .header {
+    @apply text-black
+  }
+  .button {
+    @apply text-black
+  }
+  .div {
+    @apply text-green-500
+  }
+  *{
+    @apply text-blue-400
+  }
+}
