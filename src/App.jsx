@@ -1,4 +1,4 @@
-import Calendar from "react-calendar";
+import DiaryCalendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 import Entrylist from "./components/Entrylist";
 
@@ -11,7 +11,7 @@ const App = () => {
         <button className="add-entry-btn">Add entry</button>
       </header>
       <main className="container mx-auto px-4">
-        <Calendar />
+        <DiaryCalendar />
         <Entrylist />
       </main>
     </div>
