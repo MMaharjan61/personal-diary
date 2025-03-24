@@ -49,11 +49,11 @@
 
 @layer components {
   .react-calendar {
-    @apply bg-white p-4 rounded-lg shadow-md;
+    @apply !bg-[#d4a8b4] p-4 rounded-lg shadow-md;
   }
 
   .react-calendar__tile {
-    @apply text-gray-700 hover:bg-blue-100 rounded-md transition duration-200;
+    @apply text-gray-700 hover:bg-blue-400 rounded-md transition duration-200;
   }
 
   .react-calendar__tile--active {
