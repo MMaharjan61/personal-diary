@@ -1,6 +1,6 @@
 const Entrylist = () => {
   return (
-    <div className="bg-[#5C6BBE] rounded-[15px] mx-1 max-w-[50vw]  shadow-[9px_9px_35px]">
+    <div className="bg-[#5C6BBE] rounded-[15px] mx-1 shadow-[9px_9px_35px]">
       <img
         className="w-[100%] max-h-[35vh] rounded-t-xl object-cover"
         src="https://img.freepik.com/free-photo/woman-beach-with-her-baby-enjoying-sunset_52683-144131.jpg?size=626&ext=jpg"

@@ -1,5 +1,6 @@
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
+import Entrylist from "./components/Entrylist";
 
 const App = () => {
   return (
@@ -11,6 +12,7 @@ const App = () => {
       </header>
       <main className="container mx-auto px-4">
         <Calendar />
+        <Entrylist />
       </main>
     </div>
   );
