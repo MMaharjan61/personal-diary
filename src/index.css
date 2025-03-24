@@ -32,11 +32,11 @@
 
 /* Custom styles for the diary app */
 .bg-gradient {
-  background: linear-gradient(180deg, #082140 0%, #3C4154 100%);
+  background: linear-gradient(180deg, #082140 0%, #3c4154 100%);
 }
 
 .text-highlight {
-  color: #F0A240;
+  color: #f0a240;
 }
 
 .add-entry-btn {
