@@ -1,1 +1,31 @@
 @import "tailwindcss";
+
+@custom-variant hover (&:hover);
+
+@layer base {
+  h1 {
+    @apply text-[3.4rem] md:text-[4.7rem] font-extrabold text-[#F0A240];
+  }
+  h2 {
+    @apply text-[1.25rem] md:text-[1.75rem] uppercase font-extrabold text-[#F0A240];
+  }
+
+  p {
+    @apply text-[1rem] md:text-[1.125rem]  text-[#3C4154];
+  }
+  a {
+    @apply text-[#F0A240];
+  }
+
+  a:hover {
+    @apply text-[#c18234] underline cursor-pointer;
+  }
+
+  button {
+    @apply text-[#c18234] border-[#c18234] outline-[0.25rem] text-[1rem] md:text-[1.125rem] font-semibold py-3 px-10 outline-solid cursor-pointer;
+  }
+
+  button:hover {
+    @apply bg-[#c18234] text-[#FFFFFF];
+  }
+}
