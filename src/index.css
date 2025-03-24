@@ -30,23 +30,19 @@
   }
 }
 
-@layer components{
-  .Calender h1{
-    @apply text-black
-  }
-  .p {
-    @apply text-black
-  }
-  .header {
-    @apply text-black
-  }
-  .button {
-    @apply text-black
-  }
-  .div {
-    @apply text-green-500
-  }
-  *{
-    @apply text-blue-400
-  }
+/* Custom styles for the diary app */
+.bg-gradient {
+  background: linear-gradient(180deg, #082140 0%, #3c4154 100%);
+}
+
+.text-highlight {
+  color: #f0a240;
+}
+
+.add-entry-btn {
+  @apply bg-transparent border-2 border-[#F0A240] text-[#F0A240] py-2 px-6 rounded-md transition-all duration-300;
+}
+
+.add-entry-btn:hover {
+  @apply bg-[#F0A240] text-[#FFFFFF];
 }
