@@ -1,5 +1,12 @@
+import Entrylist from "./components/Entrylist";
+
 const App = () => {
-  return <div className="text-2xl">Hello</div>;
+  return (
+    <div>
+      Hello
+      <Entrylist />
+    </div>
+  );
 };
 
 export default App;
