@@ -4,13 +4,11 @@ import Entrylist from "./components/Entrylist";
 const App = () => {
   return (
     <>
-      (
       <div>
         Hello
         <Entrylist />
-        <Calendar />
+        {/* <Calendar /> */}
       </div>
-      );
     </>
   );
 };
