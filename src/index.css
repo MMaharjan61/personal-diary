@@ -49,7 +49,7 @@
 
 @layer components {
   .react-calendar {
-    @apply !bg-[#d4a8b4] p-4 rounded-lg shadow-md;
+    @apply !bg-[#d4a8b4] p-4 rounded-lg shadow-md !w-min;
   }
 
   .react-calendar__tile {
