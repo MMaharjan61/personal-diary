@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import { loadEntries, saveEntry } from "./Storage";
+import { loadEntries } from "./Storage";
 
-const AddEntry = ({ onAddEntry }) => {
-  const today = new Date().toISOString().split("T")[0]; // Today's date (YYYY-MM-DD)
+const AddEntry = ({ onAddEntry, onCancel }) => {
+  const today = new Date().toISOString().split("T")[0];
   const existingEntries = loadEntries();
-  const hasEntryToday = existingEntries.some((entry) => entry.date === today);
+  //const hasEntryToday = existingEntries.some((entry) => entry.date === today);
 
   const [title, setTitle] = useState("");
   const [date, setDate] = useState(today);
@@ -18,21 +18,20 @@ const AddEntry = ({ onAddEntry }) => {
       return;
     }
 
-    if (hasEntryToday) {
+    /*if (hasEntryToday) {
       setError(
         "You have already added an entry for today. Please come back tomorrow!"
       );
       return;
-    }
+    }*/
 
     const newEntry = { title, date, image, content };
-    //onAddEntry(newEntry);
-    saveEntry(newEntry);
+    onAddEntry(newEntry);
   };
 
   return (
-    <div className="fixed inset-0 bg-gray-500 bg-opacity-50 flex items-center justify-center">
-      <div className="bg-[#082140] p-6 rounded-lg w-96">
+    <div className="fixed inset-0 bg-[#d4a8b4] bg-opacity-50 flex items-center justify-center">
+      <div className="bg-[#082140] p-6 rounded-lg w-96 relative">
         <h2 className="text-2xl font-bold mb-4">New entry</h2>
         {error && <p className="text-red-500 mb-4">{error}</p>}
         <input
@@ -66,6 +65,12 @@ const AddEntry = ({ onAddEntry }) => {
           onClick={handleSubmit}
         >
           Save entry
+        </button>
+        <button
+          className="absolute bottom-6 right-6 px-2 py-1 border-[#F0A240] text-[#F0A240] text-sm rounded hover:bg-[#c18234] hover:text-[#FFFFFF]"
+          onClick={onCancel}
+        >
+          Cancel
         </button>
       </div>
     </div>

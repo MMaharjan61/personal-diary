@@ -2,12 +2,21 @@ import { useState, useEffect } from "react";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 import Entrylist from "./components/Entrylist";
-import AddEntry from "./Components/AddEntry";
+import AddEntry from "./components/AddEntry";
+import { loadEntries, saveEntry } from "./components/Storage";
 
 const App = () => {
-  const [isAddModalOpen, setIsAddModalOpen] = useState(false);
+  const [entries, setEntries] = useState([]);
+  const [isAddEntryOpen, setIsAddEntryOpen] = useState(false);
+
+  useEffect(() => {
+    const savedEntries = loadEntries();
+    setEntries(savedEntries);
+  }, []);
+
+  /*
   // Store all diary entries in state
-  const [diaryEntries, setDiaryEntries] = useState([]);
+  //const [diaryEntries, setDiaryEntries] = useState([]);
 
   // Load saved entries when the app starts
   useEffect(() => {
@@ -52,11 +61,12 @@ const App = () => {
     // Simple verification log
     console.log("Entry added successfully:", entryToAdd);
   };
+  */
 
   const handleAddEntry = (newEntry) => {
-    saveEntry(newEntry);
+    saveEntry(newEntry); // save new entry
     setEntries(loadEntries()); // Reload entries
-    setIsAddModalOpen(false); // Close modal
+    setIsAddEntryOpen(false); // Close the modal
   };
 
   return (
@@ -65,7 +75,7 @@ const App = () => {
         <h1 className="text-highlight mb-8">MyDiary</h1>
         <button
           className="add-entry-btn"
-          onClick={() => setIsAddModalOpen(true)}
+          onClick={() => setIsAddEntryOpen(true)}
           /*onClick={() => {
             const sampleEntry = {
               title: "Sample Diary Entry",
@@ -78,7 +88,13 @@ const App = () => {
         >
           Add Entry
         </button>
-        {isAddModalOpen && <AddEntry onAddEntry={handleAddEntry} />}
+
+        {isAddEntryOpen && (
+          <AddEntry
+            onAddEntry={handleAddEntry}
+            onCancel={() => setIsAddEntryOpen(false)}
+          />
+        )}
       </header>
       <main className="container mx-auto px-4">
         <div className="flex flex-col md:flex-row gap-8">
@@ -87,14 +103,14 @@ const App = () => {
               className="rounded-lg shadow-lg p-4 bg-white"
               tileClassName="hover:bg-blue-100 rounded-full"
               activeTileClassName="bg-blue-500 text-white"
-              tileContent={({ date }) => {
-                const hasEntry = diaryEntries.some(
+              /*tileContent={({ date }) => {
+                const hasEntry = entries.some(
                   (entry) => entry.date.toDateString() === date.toDateString()
                 );
                 return hasEntry ? (
                   <div className="w-2 h-2 bg-blue-500 rounded-full mx-auto"></div>
                 ) : null;
-              }}
+              }}*/
             />
           </div>
           <div className="w-full md:w-2/3">

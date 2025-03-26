@@ -5,6 +5,6 @@ export const loadEntries = () => {
 
 export const saveEntry = (entry) => {
   const entries = loadEntries();
-  const updatedEntries = [entry, ...entries];
+  const updatedEntries = [...entries, entry];
   localStorage.setItem("diaryEntries", JSON.stringify(updatedEntries));
 };
