@@ -3,10 +3,12 @@ import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 import Entrylist from "./componentsNew/Entrylist";
 import AddEntry from "./componentsNew/AddEntry";
+import ShowInfo from "./componentsNew/ShowInfo";
 import { loadEntries, saveEntry } from "./componentsNew/Storage";
 
 const App = () => {
   const [entries, setEntries] = useState([]);
+  const [isInfoOpen, setIsInfoOpen] = useState(false);
   const [isAddEntryOpen, setIsAddEntryOpen] = useState(false);
 
   useEffect(() => {
@@ -63,6 +65,18 @@ const App = () => {
   };
   */
 
+  const handleAddEntryClick = () => {
+    const today = new Date().toISOString().split("T")[0];
+    const existingEntries = loadEntries();
+    const hasEntryToday = existingEntries.some((entry) => entry.date === today);
+
+    if (hasEntryToday) {
+      setIsInfoOpen(true); // Show the info
+    } else {
+      setIsAddEntryOpen(true); // Open the modal to add a new entry
+    }
+  };
+
   const handleAddEntry = (newEntry) => {
     saveEntry(newEntry); // save new entry
     setEntries(loadEntries()); // Reload entries
@@ -75,7 +89,7 @@ const App = () => {
         <h1 className="text-highlight mb-8">MyDiary</h1>
         <button
           className="add-entry-btn"
-          onClick={() => setIsAddEntryOpen(true)}
+          onClick={handleAddEntryClick}
           /*onClick={() => {
             const sampleEntry = {
               title: "Sample Diary Entry",
@@ -88,7 +102,7 @@ const App = () => {
         >
           Add Entry
         </button>
-
+        {isInfoOpen && <ShowInfo onClick={() => setIsInfoOpen(false)} />}
         {isAddEntryOpen && (
           <AddEntry
             onAddEntry={handleAddEntry}
