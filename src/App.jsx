@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
-import Entrylist from "./components/Entrylist";
-import AddEntry from "./components/AddEntry";
-import { loadEntries, saveEntry } from "./components/Storage";
+import Entrylist from "./componentsNew/Entrylist";
+import AddEntry from "./componentsNew/AddEntry";
+import { loadEntries, saveEntry } from "./componentsNew/Storage";
 
 const App = () => {
   const [entries, setEntries] = useState([]);
