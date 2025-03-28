@@ -8,7 +8,7 @@ const ShowInfo = ({ onClick }) => {
           to add a new entry!
         </p>
         <button
-          className="mt-4 px-2 py-1 border-[#F0A240] text-[#F0A240] text-sm rounded hover:bg-[#c18234] hover:text-[#FFFFFF]"
+          className="mt-4 px-3 py-1 bg-[#c18234] text-white text-sm rounded outline-none hover:bg-[#F0A240]"
           onClick={onClick}
         >
           OK
