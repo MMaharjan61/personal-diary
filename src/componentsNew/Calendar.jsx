@@ -1,7 +1,13 @@
 import Calendar from 'react-calendar'
 
 
-const DiaryCalendar  = () => {
+    const DiaryCalendar = ({ entries,setFilter }) => {
+        const [filter, setFilter] = useState(null);
+    const handleDateChange = (date) => {
+        const formattedDate = date.toISOString().split("T")[0];
+        setFilter(formattedDate);
+    }
+
 
     
 
@@ -10,7 +16,8 @@ const DiaryCalendar  = () => {
     return (
         <>
         
-        <Calendar  />
+        <Calendar 
+        />
         
         </>
     );

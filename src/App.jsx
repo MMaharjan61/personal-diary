@@ -10,6 +10,7 @@ const App = () => {
   const [entries, setEntries] = useState([]);
   const [isInfoOpen, setIsInfoOpen] = useState(false);
   const [isAddEntryOpen, setIsAddEntryOpen] = useState(false);
+  const [filter,setFilter] =useState(null);
 
   useEffect(() => {
     const savedEntries = loadEntries();
@@ -64,7 +65,10 @@ const App = () => {
     console.log("Entry added successfully:", entryToAdd);
   };
   */
-
+  const handleDateChange = (date) => {
+    const formattedDate = date.toISOString().split("T")[0]; // Format to yyyy-mm-dd
+    setFilter(formattedDate); // Set filter to selected date
+  };
   const handleAddEntryClick = () => {
     const today = new Date().toISOString().split("T")[0];
     const existingEntries = loadEntries();
@@ -113,27 +117,27 @@ const App = () => {
       <main className="container mx-auto px-4">
         <div className="flex flex-col md:flex-row gap-8">
           <div className="w-full md:w-1/3">
-            <Calendar
-              className="rounded-lg shadow-lg p-4 bg-white"
-              tileClassName="hover:bg-blue-100 rounded-full"
-              activeTileClassName="bg-blue-500 text-white"
-              /*tileContent={({ date }) => {
+            <Calendar onChange={handleDateChange}
+              value={new Date(filter || Date.now())}
+              tileContent={({ date }) => {
+                const formattedDate = date.toISOString().split("T")[0]; // Format to yyyy-mm-dd
                 const hasEntry = entries.some(
-                  (entry) => entry.date.toDateString() === date.toDateString()
+                  (entry) => entry.date === formattedDate
                 );
                 return hasEntry ? (
-                  <div className="w-2 h-2 bg-blue-500 rounded-full mx-auto"></div>
+                  <div className="w-2 h-2 bg-green-500 rounded-full mx-auto"></div>
                 ) : null;
-              }}*/
+              }}
             />
           </div>
           <div className="w-full md:w-2/3">
-            <Entrylist />
+            <Entrylist entries={entries} filter={filter} />
           </div>
         </div>
       </main>
     </div>
   );
 };
+          
 
 export default App;
