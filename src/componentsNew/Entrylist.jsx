@@ -2,6 +2,7 @@ import { loadEntries } from "./Storage.jsx";
 
 const Entrylist = ({ filter }) => {
   const entries = loadEntries() || [];
+  console.log(filter);
 
   return (
     <>
