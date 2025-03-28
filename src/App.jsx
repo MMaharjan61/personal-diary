@@ -65,6 +65,8 @@ const App = () => {
     console.log("Entry added successfully:", entryToAdd);
   };
   */
+
+
   const handleDateChange = (date) => {
     const formattedDate = date.toISOString().split("T")[0]; // Format to yyyy-mm-dd
     setFilter(formattedDate); // Set filter to selected date
@@ -86,6 +88,9 @@ const App = () => {
     setEntries(loadEntries()); // Reload entries
     setIsAddEntryOpen(false); // Close the modal
   };
+
+  const handleRemoveFilter = () => {
+    setFilter(null);} // remove filter
 
   return (
     <div className="min-h-screen bg-gradient">
@@ -113,16 +118,20 @@ const App = () => {
             onCancel={() => setIsAddEntryOpen(false)}
           />
         )}
+        <button className="mt-4" onClick={handleRemoveFilter}>Show all Entries </button>
       </header>
       <main className="container mx-auto px-4">
         <div className="flex flex-col md:flex-row gap-8">
-          <div className="w-full md:w-1/3">
+          <div className="w-full sm:w-2/3 md:w-1/2 lg:w-1/3">
             <Calendar onChange={handleDateChange}
-              value={new Date(filter || Date.now())}
+              value={filter ? new Date(filter) : new Date()}
+              tileClassName={({ date }) => {
+                const formattedDate = date.toISOString().split("T")[0];
+                return filter === formattedDate ? "bg-blue-500 text-white rounded-md" : ""; 
+              }}
               tileContent={({ date }) => {
                 const formattedDate = date.toISOString().split("T")[0]; // Format to yyyy-mm-dd
-                const hasEntry = entries.some(
-                  (entry) => entry.date === formattedDate
+                const hasEntry = entries.some((entry) => entry.date === formattedDate
                 );
                 return hasEntry ? (
                   <div className="w-2 h-2 bg-green-500 rounded-full mx-auto"></div>
