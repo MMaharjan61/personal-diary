@@ -4,6 +4,7 @@ import "react-calendar/dist/Calendar.css";
 import Entrylist from "./componentsNew/Entrylist";
 import AddEntry from "./componentsNew/AddEntry";
 import ShowInfo from "./componentsNew/ShowInfo";
+import DummyEntry from "./componentsNew/DummyEntries";
 import { loadEntries, saveEntry } from "./componentsNew/Storage";
 
 const App = () => {
@@ -15,6 +16,9 @@ const App = () => {
   useEffect(() => {
     const savedEntries = loadEntries();
     setEntries(savedEntries);
+    if (savedEntries.length === 0) {
+      DummyEntry();
+    }
   }, []);
 
   /*
