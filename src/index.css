@@ -22,7 +22,7 @@
   }
 
   button {
-    @apply text-[#c18234] border-[#c18234] outline-[0.25rem] text-[1rem] md:text-[1.125rem] font-semibold py-3 px-10 outline-solid cursor-pointer;
+    @apply text-[#c18234] border-[#c18234] outline-[0.25rem] text-[1rem] md:text-[1.125rem] font-semibold outline-solid cursor-pointer;
   }
 
   button:hover {
@@ -66,6 +66,11 @@
 
   .react-calendar__month-view__days__day--weekend {
     @apply text-red-500;
+  }
+
+  .react-calendar {
+    width: auto;
+    min-width: 100%;
   }
 
   .react-calendar__navigation button {
